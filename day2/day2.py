@@ -39,3 +39,20 @@ def get_total_moved(moves: list[Tuple[MoveAction, int]]) -> Tuple[int, int]:
             raise Exception("A MoveAction can only be UP, DOWN, or FORWARD")
 
     return ret_hor, ret_vert
+
+
+def get_total_moved_with_aim(moves: list[Tuple[MoveAction, int]]) -> Tuple[int, int]:
+    ret_hor = 0
+    ret_vert = 0
+    aim = 0
+
+    for action, distance in moves:
+        if action == MoveAction.UP:
+            aim -= distance
+        elif action == MoveAction.DOWN:
+            aim += distance
+        elif action == MoveAction.FORWARD:
+            ret_hor += distance
+            ret_vert += aim*distance
+
+    return ret_hor, ret_vert

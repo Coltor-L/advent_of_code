@@ -27,3 +27,15 @@ def test_get_total_moved():
         moves = day2.get_move_distance_pairs(f.readlines())
         hor, vert = day2.get_total_moved(moves)
         assert hor * vert == 1427868
+
+
+def test_get_total_moved_with_aim():
+    with open("inputs1.txt") as f:
+        moves = day2.get_move_distance_pairs(f.readlines())
+        hor, vert = day2.get_total_moved_with_aim(moves)
+        assert hor * vert == 900
+
+    with open("inputs2.txt") as f:
+        moves = day2.get_move_distance_pairs(f.readlines())
+        hor, vert = day2.get_total_moved_with_aim(moves)
+        assert hor * vert == 1568138742
